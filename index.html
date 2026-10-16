@@ -107,10 +107,74 @@
             font-weight: 600;
             text-align: center;
             transition: background-color 0.2s, border-color 0.2s;
+            cursor: pointer;
         }
         .btn:hover {
             background-color: #30363d;
             border-color: #8b949e;
+        }
+        /* Modal for displaying folder contents */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        .modal h2 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        .file-item {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .file-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .file-link:hover {
+            text-decoration: underline;
+        }
+        .close-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            float: right;
+        }
+        .close-btn:hover {
+            background-color: #cc0000;
         }
     </style>
 </head>
@@ -130,12 +194,12 @@
             <div class="card" data-tags="hubs dashboards menus portals">
                 <h3>Hubs</h3>
                 <p>Central management dashboards and navigation frames.</p>
-                <a href="./Hubs/" class="btn">Explore Directory</a>
+                <button class="btn" onclick="openFolder('Hubs')">Explore Directory</button>
             </div>
             <div class="card" data-tags="important infrastructure essential configurations">
                 <h3>Important</h3>
                 <p>Critical project dependencies, build configurations, and core assets.</p>
-                <a href="./Important/" class="btn">View Directory</a>
+                <button class="btn" onclick="openFolder('Important')">View Directory</button>
             </div>
         </div>
 
@@ -145,17 +209,17 @@
             <div class="card" data-tags="exploits bypasses unblocking restrictions breaks">
                 <h3>Exploits</h3>
                 <p>System deployment scripts and privilege boundary overrides.</p>
-                <a href="./Exploits/" class="btn">Launch Exploits</a>
+                <button class="btn" onclick="openFolder('Exploits')">Launch Exploits</button>
             </div>
             <div class="card" data-tags="cheats menus enhancements modifications hacks">
                 <h3>Cheats</h3>
                 <p>Custom parameter modifiers and operational game helpers.</p>
-                <a href="./Cheats/" class="btn">Open Modules</a>
+                <button class="btn" onclick="openFolder('Cheats')">Open Modules</button>
             </div>
             <div class="card" data-tags="alternatives fallbacks configurations options secondary">
                 <h3>Alternatives</h3>
                 <p>Fallback systems and alternative asset configuration packages.</p>
-                <a href="./Alternatives/" class="btn">View Alternatives</a>
+                <button class="btn" onclick="openFolder('Alternatives')">View Alternatives</button>
             </div>
         </div>
 
@@ -165,12 +229,12 @@
             <div class="card" data-tags="proxies prxes network routing nodes traffic bypass">
                 <h3>Proxies</h3>
                 <p>Dedicated forward proxy distribution instances.</p>
-                <a href="./Prxes/" class="btn">Connect Nodes</a>
+                <button class="btn" onclick="openFolder('Prxes')">Connect Nodes</button>
             </div>
             <div class="card" data-tags="mixes network custom routing tables gateways templates">
                 <h3>Mixes (Prxes)</h3>
                 <p>Blended routing network profiles and customized configuration arrays.</p>
-                <a href="./Mixes (Prxes)/" class="btn">View Mixes</a>
+                <button class="btn" onclick="openFolder('Mixes (Prxes)')">View Mixes</button>
             </div>
         </div>
 
@@ -180,17 +244,17 @@
             <div class="card" data-tags="gxmes arcade entertainment emulation interactive web">
                 <h3>Gxmes</h3>
                 <p>Locally stored offline-capable web application modules.</p>
-                <a href="./Gxmes/" class="btn">Open Arcade</a>
+                <button class="btn" onclick="openFolder('Gxmes')">Open Arcade</button>
             </div>
             <div class="card" data-tags="leisure multimedia audio visual video stream sandbox">
                 <h3>Leisure</h3>
                 <p>Streaming entertainment and custom sandbox layouts.</p>
-                <a href="./Leisure/" class="btn">Access Lounge</a>
+                <button class="btn" onclick="openFolder('Leisure')">Access Lounge</button>
             </div>
             <div class="card" data-tags="os operating systems environments distributions sandboxes virtual">
                 <h3>OS</h3>
                 <p>Alternative environment deployment scripts and runtime emulators.</p>
-                <a href="./OS/" class="btn">Boot Environments</a>
+                <button class="btn" onclick="openFolder('OS')">Boot Environments</button>
             </div>
         </div>
 
@@ -200,57 +264,88 @@
             <div class="card" data-tags="tutorials instruction guides walkthroughs documentation howto">
                 <h3>Tutorials</h3>
                 <p>Detailed steps for manual software installation and execution flags.</p>
-                <a href="./Tutorials/" class="btn">Read Guides</a>
+                <button class="btn" onclick="openFolder('Tutorials')">Read Guides</button>
             </div>
             <div class="card" data-tags="random miscellaneous snippets assets experiments storage">
                 <h3>Random</h3>
                 <p>Unsorted utility configurations and developmental modules.</p>
-                <a href="./Random/" class="btn">Browse Loose Files</a>
-            </div>
-        </div>
-    </div>
+Use code with caution.
+Browse Loose Files
 
-    <script>
-        function filterMenu() {
-            const input = document.getElementById('search').value.toLowerCase();
-            const cards = document.getElementsByClassName('card');
-            const sections = document.getElementsByClassName('section-title');
-            const grids = document.getElementsByClassName('grid');
 
-            // Filter individual cards
-            for (let i = 0; i < cards.length; i++) {
-                const title = cards[i].querySelector('h3').innerText.toLowerCase();
-                const tags = cards[i].getAttribute('data-tags');
-                
-                if (title.includes(input) || tags.includes(input)) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
+Folder Contents
 
-            // Hide sections entirely if no cards within them match
-            for (let j = 0; j < grids.length; j++) {
-                const gridCards = grids[j].getElementsByClassName('card');
-                let hasVisibleCard = false;
+Loading files...
 
-                for (let k = 0; k < gridCards.length; k++) {
-                    if (gridCards[k].style.display !== "none") {
-                        hasVisibleCard = true;
-                        break;
-                    }
-                }
+Close
 
-                if (hasVisibleCard) {
-                    grids[j].style.display = "";
-                    sections[j].style.display = "";
-                } else {
-                    grids[j].style.display = "none";
-                    sections[j].style.display = "none";
-                }
-            }
-        }
-    </script>
-
-</body>
-</html>
+const repoOwner = "dih722721-pixel";
+const repoName = "mathscifun";
+function filterMenu() {
+const input = document.getElementById('search').value.toLowerCase();
+const cards = document.getElementsByClassName('card');
+const sections = document.getElementsByClassName('section-title');
+const grids = document.getElementsByClassName('grid');
+for (let i = 0; i < cards.length; i++) {
+const title = cards[i].querySelector('h3').innerText.toLowerCase();
+const tags = cards[i].getAttribute('data-tags');
+if (title.includes(input) || tags.includes(input)) {
+cards[i].style.display = "";
+} else {
+cards[i].style.display = "none";
+}
+}
+for (let j = 0; j < grids.length; j++) {
+const gridCards = grids[j].getElementsByClassName('card');
+let hasVisibleCard = false;
+for (let k = 0; k < gridCards.length; k++) {
+if (gridCards[k].style.display !== "none") {
+hasVisibleCard = true;
+break;
+}
+}
+grids[j].style.display = hasVisibleCard ? "" : "none";
+sections[j].style.display = hasVisibleCard ? "" : "none";
+}
+}
+async function openFolder(folderName) {
+const modal = document.getElementById('fileModal');
+const title = document.getElementById('modalTitle');
+const list = document.getElementById('fileList');
+title.innerText = folderName;
+list.innerHTML = "Loading files from directory...";
+modal.style.display = "flex";
+try {
+// Fetch the list of files inside the directory directly from GitHub's API
+const response = await fetch(https://github.com{repoOwner}/${repoName}/contents/${encodeURIComponent(folderName)});
+if (!response.ok) throw new Error("Could not retrieve files");
+const files = await response.json();
+list.innerHTML = "";
+if (files.length === 0) {
+list.innerHTML = "No files found in this directory.";
+return;
+}
+files.forEach(file => {
+// Ignore background files or config maps
+if (file.name.startsWith('.')) return;
+const li = document.createElement('li');
+li.className = 'file-item';
+// Route directly via Vercel deployment path format
+const relativePath = ./${encodeURIComponent(folderName)}/${encodeURIComponent(file.name)};
+li.innerHTML = <a class="file-link" href="${relativePath}" target="_blank">${file.name}</a> <span style="font-size: 11px; color: var(--text-muted);">${file.type}</span>;
+list.appendChild(li);
+});
+} catch (error) {
+list.innerHTML = "Error loading files. The directory might be empty or missing.";
+}
+}
+function closeModal() {
+document.getElementById('fileModal').style.display = "none";
+}
+// Close modal clicking outside content box
+window.onclick = function(event) {
+const modal = document.getElementById('fileModal');
+if (event.target == modal) {
+modal.style.display = "none";
+}
+}
