@@ -1,4 +1,18 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "routes": [
+    { "src": "/Alternatives", "dest": "/Alternatives/" },
+    { "src": "/Cheats", "dest": "/Cheats/" },
+    { "src": "/Exploits", "dest": "/Exploits/" },
+    { "src": "/Gxmes", "dest": "/Gxmes/" },
+    { "src": "/Hubs", "dest": "/Hubs/" },
+    { "src": "/Important", "dest": "/Important/" },
+    { "src": "/Leisure", "dest": "/Leisure/" },
+    { "src": "/Mixes (Prxes)", "dest": "/Mixes (Prxes)/" },
+    { "src": "/OS", "dest": "/OS/" },
+    { "src": "/Prxes", "dest": "/Prxes/" },
+    { "src": "/Random", "dest": "/Random/" },
+    { "src": "/Tutorials", "dest": "/Tutorials/" }
+  ]
 }
