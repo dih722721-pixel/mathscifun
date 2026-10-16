@@ -1,59 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Chromebook Utilities</title>
-  <style>
-    body { font-family: sans-serif; }
-    ul { list-style-type: none; padding-left: 20px; }
-    a { text-decoration: none; color: #0366d6; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chromebook Utilities Directory</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        p {
+            color: var(--text-muted);
+            margin: 5px 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 1000px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: #010409;
+            color: #fff;
+            margin-bottom: 25px;
+            box-sizing: border-box;
+        }
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+        }
+        .section-title {
+            font-size: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+        .card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            color: #ffffff;
+        }
+        .card p {
+            font-size: 13px;
+            margin: 0 0 16px 0;
+            line-height: 1.4;
+        }
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #21262d;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+        }
+    </style>
 </head>
 <body>
-  <h1>📁 Chromebook Utilities</h1>
-  <h3>This collection was created by S-PScripts! Check out the source <a href="https://github.com/S-PScripts/chromebook-utilities">here</a>. </h3>
-  <h3>Read the <a href="https://github.com/S-PScripts/chromebook-utilities/blob/main/Important/DISCLAIMER.md">disclaimer</a> before viewing this repo further. </h3>
-  <h4>If nothing loads, use the link above or try again later. </h4>
-  <div id="file-tree">Loading...</div>
 
-  <script>
-    const user = "S-PScripts";
-    const repo = "chromebook-utilities";
-    const branch = "main";
-    const apiBase = `https://api.github.com/repos/${user}/${repo}/contents/`;
+    <header>
+        <h1>Chromebook Utilities</h1>
+        <p>Main Portal Navigation Platform</p>
+    </header>
 
-    async function fetchTree(path = "") {
-      const url = apiBase + path;
-      const response = await fetch(url);
-      if (!response.ok) {
-        return `<li>Error loading ${path}</li>`;
-      }
-      const items = await response.json();
+    <div class="container">
+        <input type="text" id="search" class="search-bar" placeholder="Filter categories or tools..." onkeyup="filterMenu()">
 
-      if (!Array.isArray(items)) return "";
+        <!-- Core Infrastructure -->
+        <div class="section-title">Core Systems</div>
+        <div class="grid">
+            <div class="card" data-tags="hubs dashboards menus portals">
+                <h3>Hubs</h3>
+                <p>Central management dashboards and navigation frames.</p>
+                <a href="./Hubs/" class="btn">Explore Directory</a>
+            </div>
+            <div class="card" data-tags="important infrastructure essential configurations">
+                <h3>Important</h3>
+                <p>Critical project dependencies, build configurations, and core assets.</p>
+                <a href="./Important/" class="btn">View Directory</a>
+            </div>
+        </div>
 
-      const ul = document.createElement("ul");
-      for (const item of items) {
-        const li = document.createElement("li");
+        <!-- Utilities & Bypass Modules -->
+        <div class="section-title">Utilities & Bypasses</div>
+        <div class="grid">
+            <div class="card" data-tags="exploits bypasses unblocking restrictions breaks">
+                <h3>Exploits</h3>
+                <p>System deployment scripts and privilege boundary overrides.</p>
+                <a href="./Exploits/" class="btn">Launch Exploits</a>
+            </div>
+            <div class="card" data-tags="cheats menus enhancements modifications hacks">
+                <h3>Cheats</h3>
+                <p>Custom parameter modifiers and operational game helpers.</p>
+                <a href="./Cheats/" class="btn">Open Modules</a>
+            </div>
+            <div class="card" data-tags="alternatives fallbacks configurations options secondary">
+                <h3>Alternatives</h3>
+                <p>Fallback systems and alternative asset configuration packages.</p>
+                <a href="./Alternatives/" class="btn">View Alternatives</a>
+            </div>
+        </div>
 
-        if (item.type === "dir") {
-          li.innerHTML = `<strong>📁 ${item.name}</strong>`;
-          const subTree = await fetchTree(item.path);
-          li.appendChild(subTree);
-        } else if (item.type === "file") {
-          const rawURL = `${window.location.origin}/${item.path}`;
-          li.innerHTML = `<a href="${rawURL}" target="_blank">📄 ${item.name}</a>`;
+        <!-- Network & Proxy Layers -->
+        <div class="section-title">Network & Proxies</div>
+        <div class="grid">
+            <div class="card" data-tags="proxies prxes network routing nodes traffic bypass">
+                <h3>Proxies</h3>
+                <p>Dedicated forward proxy distribution instances.</p>
+                <a href="./Prxes/" class="btn">Connect Nodes</a>
+            </div>
+            <div class="card" data-tags="mixes network custom routing tables gateways templates">
+                <h3>Mixes (Prxes)</h3>
+                <p>Blended routing network profiles and customized configuration arrays.</p>
+                <a href="./Mixes (Prxes)/" class="btn">View Mixes</a>
+            </div>
+        </div>
+
+        <!-- Media & Interactive Environments -->
+        <div class="section-title">Media & Software</div>
+        <div class="grid">
+            <div class="card" data-tags="gxmes arcade entertainment emulation interactive web">
+                <h3>Gxmes</h3>
+                <p>Locally stored offline-capable web application modules.</p>
+                <a href="./Gxmes/" class="btn">Open Arcade</a>
+            </div>
+            <div class="card" data-tags="leisure multimedia audio visual video stream sandbox">
+                <h3>Leisure</h3>
+                <p>Streaming entertainment and custom sandbox layouts.</p>
+                <a href="./Leisure/" class="btn">Access Lounge</a>
+            </div>
+            <div class="card" data-tags="os operating systems environments distributions sandboxes virtual">
+                <h3>OS</h3>
+                <p>Alternative environment deployment scripts and runtime emulators.</p>
+                <a href="./OS/" class="btn">Boot Environments</a>
+            </div>
+        </div>
+
+        <!-- Documentation & Information -->
+        <div class="section-title">Guides & Resources</div>
+        <div class="grid">
+            <div class="card" data-tags="tutorials instruction guides walkthroughs documentation howto">
+                <h3>Tutorials</h3>
+                <p>Detailed steps for manual software installation and execution flags.</p>
+                <a href="./Tutorials/" class="btn">Read Guides</a>
+            </div>
+            <div class="card" data-tags="random miscellaneous snippets assets experiments storage">
+                <h3>Random</h3>
+                <p>Unsorted utility configurations and developmental modules.</p>
+                <a href="./Random/" class="btn">Browse Loose Files</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterMenu() {
+            const input = document.getElementById('search').value.toLowerCase();
+            const cards = document.getElementsByClassName('card');
+            const sections = document.getElementsByClassName('section-title');
+            const grids = document.getElementsByClassName('grid');
+
+            // Filter individual cards
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].querySelector('h3').innerText.toLowerCase();
+                const tags = cards[i].getAttribute('data-tags');
+                
+                if (title.includes(input) || tags.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            // Hide sections entirely if no cards within them match
+            for (let j = 0; j < grids.length; j++) {
+                const gridCards = grids[j].getElementsByClassName('card');
+                let hasVisibleCard = false;
+
+                for (let k = 0; k < gridCards.length; k++) {
+                    if (gridCards[k].style.display !== "none") {
+                        hasVisibleCard = true;
+                        break;
+                    }
+                }
+
+                if (hasVisibleCard) {
+                    grids[j].style.display = "";
+                    sections[j].style.display = "";
+                } else {
+                    grids[j].style.display = "none";
+                    sections[j].style.display = "none";
+                }
+            }
         }
-        ul.appendChild(li);
-      }
-      return ul;
-    }
+    </script>
 
-    fetchTree().then(tree => {
-      const container = document.getElementById("file-tree");
-      container.innerHTML = "";
-      container.appendChild(tree);
-    });
-  </script>
 </body>
 </html>
