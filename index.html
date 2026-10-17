@@ -23,329 +23,68 @@
             flex-direction: column;
             align-items: center;
         }
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-        h1 {
-            color: #ffffff;
-            font-size: 2rem;
-            margin-bottom: 5px;
-        }
-        p {
-            color: var(--text-muted);
-            margin: 5px 0;
-        }
-        .container {
-            width: 100%;
-            max-width: 1000px;
-        }
-        .search-bar {
-            width: 100%;
-            padding: 12px 16px;
-            font-size: 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background-color: #010409;
-            color: #fff;
-            margin-bottom: 25px;
-            box-sizing: border-box;
-        }
-        .search-bar:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
-        }
-        .section-title {
-            font-size: 1.25rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 8px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-        }
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 16px;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.15s, border-color 0.15s;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
-        }
-        .card h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.1rem;
-            color: #ffffff;
-        }
-        .card p {
-            font-size: 13px;
-            margin: 0 0 16px 0;
-            line-height: 1.4;
-        }
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            background-color: #21262d;
-            color: var(--accent-color);
-            border: 1px solid var(--border-color);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            text-align: center;
-            transition: background-color 0.2s, border-color 0.2s;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #30363d;
-            border-color: #8b949e;
-        }
-        /* Modal for displaying folder contents */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .modal-content {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 24px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80%;
-            overflow-y: auto;
-        }
-        .modal h2 {
-            margin-top: 0;
-            color: #fff;
-            font-size: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-        .file-list {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-        .file-item {
-            padding: 10px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .file-link {
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .file-link:hover {
-            text-decoration: underline;
-        }
-        .close-btn {
-            background-color: #ff4444;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            float: right;
-        }
-        .close-btn:hover {
-            background-color: #cc0000;
-        }
+        header { text-align: center; margin-bottom: 30px; max-width: 600px; }
+        h1 { color: #ffffff; font-size: 2rem; margin-bottom: 5px; }
+        p { color: var(--text-muted); margin: 5px 0; }
+        .container { width: 100%; max-width: 1000px; }
+        .search-bar { width: 100%; padding: 12px 16px; font-size: 16px; border: 1px solid var(--border-color); border-radius: 6px; background-color: #010409; color: #fff; margin-bottom: 25px; box-sizing: border-box; }
+        .section-title { font-size: 1.25rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-top: 30px; margin-bottom: 15px; color: #ffffff; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+        .card h3 { margin: 0 0 8px 0; font-size: 1.1rem; color: #ffffff; }
+        .card p { font-size: 13px; margin: 0 0 16px 0; line-height: 1.4; }
+        .btn { display: inline-block; text-decoration: none; background-color: #21262d; color: var(--accent-color); border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; text-align: center; width: 100%; box-sizing: border-box; }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Chromebook Utilities</h1>
         <p>Main Portal Navigation Platform</p>
     </header>
-
     <div class="container">
         <input type="text" id="search" class="search-bar" placeholder="Filter categories or tools..." onkeyup="filterMenu()">
-
-        <!-- Core Infrastructure -->
         <div class="section-title">Core Systems</div>
         <div class="grid">
             <div class="card" data-tags="hubs dashboards menus portals">
                 <h3>Hubs</h3>
                 <p>Central management dashboards and navigation frames.</p>
-                <button class="btn" onclick="openFolder('Hubs')">Explore Directory</button>
+                <a href="https://github.com" target="_blank" class="btn">Explore Directory</a>
             </div>
             <div class="card" data-tags="important infrastructure essential configurations">
                 <h3>Important</h3>
-                <p>Critical project dependencies, build configurations, and core assets.</p>
-                <button class="btn" onclick="openFolder('Important')">View Directory</button>
+                <p>Critical project dependencies and core assets.</p>
+                <a href="https://github.com" target="_blank" class="btn">View Directory</a>
             </div>
         </div>
-
-        <!-- Utilities & Bypass Modules -->
         <div class="section-title">Utilities & Bypasses</div>
         <div class="grid">
-            <div class="card" data-tags="exploits bypasses unblocking restrictions breaks">
+            <div class="card" data-tags="exploits bypasses unblocking restrictions">
                 <h3>Exploits</h3>
-                <p>System deployment scripts and privilege boundary overrides.</p>
-                <button class="btn" onclick="openFolder('Exploits')">Launch Exploits</button>
+                <p>System deployment scripts and privilege overrides.</p>
+                <a href="https://github.com" target="_blank" class="btn">Launch Exploits</a>
             </div>
-            <div class="card" data-tags="cheats menus enhancements modifications hacks">
+            <div class="card" data-tags="cheats menus enhancements modifications">
                 <h3>Cheats</h3>
-                <p>Custom parameter modifiers and operational game helpers.</p>
-                <button class="btn" onclick="openFolder('Cheats')">Open Modules</button>
+                <p>Custom parameter modifiers and operational helpers.</p>
+                <a href="https://github.com" target="_blank" class="btn">Open Modules</a>
             </div>
-            <div class="card" data-tags="alternatives fallbacks configurations options secondary">
+            <div class="card" data-tags="alternatives fallbacks configurations options">
                 <h3>Alternatives</h3>
                 <p>Fallback systems and alternative asset configuration packages.</p>
-                <button class="btn" onclick="openFolder('Alternatives')">View Alternatives</button>
+                <a href="https://github.com" target="_blank" class="btn">View Alternatives</a>
             </div>
         </div>
-
-        <!-- Network & Proxy Layers -->
-        <div class="section-title">Network & Proxies</div>
-        <div class="grid">
-            <div class="card" data-tags="proxies prxes network routing nodes traffic bypass">
-                <h3>Proxies</h3>
-                <p>Dedicated forward proxy distribution instances.</p>
-                <button class="btn" onclick="openFolder('Prxes')">Connect Nodes</button>
-            </div>
-            <div class="card" data-tags="mixes network custom routing tables gateways templates">
-                <h3>Mixes (Prxes)</h3>
-                <p>Blended routing network profiles and customized configuration arrays.</p>
-                <button class="btn" onclick="openFolder('Mixes (Prxes)')">View Mixes</button>
-            </div>
-        </div>
-
-        <!-- Media & Interactive Environments -->
-        <div class="section-title">Media & Software</div>
-        <div class="grid">
-            <div class="card" data-tags="gxmes arcade entertainment emulation interactive web">
-                <h3>Gxmes</h3>
-                <p>Locally stored offline-capable web application modules.</p>
-                <button class="btn" onclick="openFolder('Gxmes')">Open Arcade</button>
-            </div>
-            <div class="card" data-tags="leisure multimedia audio visual video stream sandbox">
-                <h3>Leisure</h3>
-                <p>Streaming entertainment and custom sandbox layouts.</p>
-                <button class="btn" onclick="openFolder('Leisure')">Access Lounge</button>
-            </div>
-            <div class="card" data-tags="os operating systems environments distributions sandboxes virtual">
-                <h3>OS</h3>
-                <p>Alternative environment deployment scripts and runtime emulators.</p>
-                <button class="btn" onclick="openFolder('OS')">Boot Environments</button>
-            </div>
-        </div>
-
-        <!-- Documentation & Information -->
-        <div class="section-title">Guides & Resources</div>
-        <div class="grid">
-            <div class="card" data-tags="tutorials instruction guides walkthroughs documentation howto">
-                <h3>Tutorials</h3>
-                <p>Detailed steps for manual software installation and execution flags.</p>
-                <button class="btn" onclick="openFolder('Tutorials')">Read Guides</button>
-            </div>
-            <div class="card" data-tags="random miscellaneous snippets assets experiments storage">
-                <h3>Random</h3>
-                <p>Unsorted utility configurations and developmental modules.</p>
-Use code with caution.
-Browse Loose Files
-
-
-Folder Contents
-
-Loading files...
-
-Close
-
-const repoOwner = "dih722721-pixel";
-const repoName = "mathscifun";
-function filterMenu() {
-const input = document.getElementById('search').value.toLowerCase();
-const cards = document.getElementsByClassName('card');
-const sections = document.getElementsByClassName('section-title');
-const grids = document.getElementsByClassName('grid');
-for (let i = 0; i < cards.length; i++) {
-const title = cards[i].querySelector('h3').innerText.toLowerCase();
-const tags = cards[i].getAttribute('data-tags');
-if (title.includes(input) || tags.includes(input)) {
-cards[i].style.display = "";
-} else {
-cards[i].style.display = "none";
-}
-}
-for (let j = 0; j < grids.length; j++) {
-const gridCards = grids[j].getElementsByClassName('card');
-let hasVisibleCard = false;
-for (let k = 0; k < gridCards.length; k++) {
-if (gridCards[k].style.display !== "none") {
-hasVisibleCard = true;
-break;
-}
-}
-grids[j].style.display = hasVisibleCard ? "" : "none";
-sections[j].style.display = hasVisibleCard ? "" : "none";
-}
-}
-async function openFolder(folderName) {
-const modal = document.getElementById('fileModal');
-const title = document.getElementById('modalTitle');
-const list = document.getElementById('fileList');
-title.innerText = folderName;
-list.innerHTML = "Loading files from directory...";
-modal.style.display = "flex";
-try {
-// Fetch the list of files inside the directory directly from GitHub's API
-const response = await fetch(https://github.com{repoOwner}/${repoName}/contents/${encodeURIComponent(folderName)});
-if (!response.ok) throw new Error("Could not retrieve files");
-const files = await response.json();
-list.innerHTML = "";
-if (files.length === 0) {
-list.innerHTML = "No files found in this directory.";
-return;
-}
-files.forEach(file => {
-// Ignore background files or config maps
-if (file.name.startsWith('.')) return;
-const li = document.createElement('li');
-li.className = 'file-item';
-// Route directly via Vercel deployment path format
-const relativePath = ./${encodeURIComponent(folderName)}/${encodeURIComponent(file.name)};
-li.innerHTML = <a class="file-link" href="${relativePath}" target="_blank">${file.name}</a> <span style="font-size: 11px; color: var(--text-muted);">${file.type}</span>;
-list.appendChild(li);
-});
-} catch (error) {
-list.innerHTML = "Error loading files. The directory might be empty or missing.";
-}
-}
-function closeModal() {
-document.getElementById('fileModal').style.display = "none";
-}
-// Close modal clicking outside content box
-window.onclick = function(event) {
-const modal = document.getElementById('fileModal');
-if (event.target == modal) {
-modal.style.display = "none";
-}
-}
+    </div>
+    <script>
+        function filterMenu() {
+            const input = document.getElementById('search').value.toLowerCase();
+            const cards = document.getElementsByClassName('card');
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].querySelector('h3').innerText.toLowerCase();
+                const tags = cards[i].getAttribute('data-tags');
+                cards[i].style.display = (title.includes(input) || tags.includes(input)) ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
